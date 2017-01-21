@@ -1,2 +1,2 @@
 jinja2 == 2.9.4
-markdown = 2.6.7
+markdown == 2.6.7
