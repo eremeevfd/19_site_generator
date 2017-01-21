@@ -52,7 +52,7 @@ if __name__ == '__main__':
     md = markdown.Markdown(extensions=['meta'])
     env.filters['markdown'] = lambda text: Markup(md.convert(text))
     template = env.get_template('/templates/index.html')
-    extensions = ['markdown', 'smartypants']
+    # extensions = ['markdown', 'smartypants']
     article_template = env.get_template('/templates/article.html')
     convert_articles_to_html(articles_list['articles'])
     render_index()
