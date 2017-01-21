@@ -31,6 +31,12 @@ def convert_articles_to_html(articles):
             article_html.truncate()
             article_html.write(doc)
 
+def render_index():
+    with open('index.html', 'w') as index:
+        index.seek(0)
+        index.truncate()
+        index.write(template.render(articles=articles_list))
+
 
 def convert_markdown_to_html(article_in_markdown):
     pass
@@ -46,5 +52,4 @@ if __name__ == '__main__':
     extensions = ['markdown', 'smartypants']
     article_template = env.get_template('/templates/article.html')
     convert_articles_to_html(articles_list['articles'])
-    with open('index.html', 'w') as index:
-        index.write(template.render(articles=articles_list))
+    render_index()
