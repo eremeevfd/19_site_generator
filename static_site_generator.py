@@ -48,7 +48,7 @@ def convert_markdown_to_html(article_in_markdown):
 if __name__ == '__main__':
     articles_list = load_json_config()
     logger.info(articles_list)
-    env = Environment(loader=FileSystemLoader('.'))
+    env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, lstrip_blocks=True)
     md = markdown.Markdown(extensions=['meta'])
     env.filters['markdown'] = lambda text: Markup(md.convert(text))
     template = env.get_template('/templates/index.html')
