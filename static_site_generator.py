@@ -16,8 +16,11 @@ def load_json_config():
 
 def convert_articles_to_html(articles):
     for article in articles:
-        html_article_path = 'articles/{0}.html'.format(os.path.splitext(article['source'])[0])
+        html_article_path = 'site/articles/{0}.html'.format(os.path.splitext(article['source'])[0])
         article['html'] = html_article_path
+        logger.info(os.path.dirname(html_article_path))
+        if not os.path.exists(os.path.dirname(html_article_path)):
+            os.makedirs(os.path.dirname(html_article_path))
         logger.info(article)
         logger.info(html_article_path)
         title = article['title']
