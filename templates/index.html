@@ -1,9 +1,12 @@
-{%  extends "templates/base.html" %}
+{%  extends "/templates/base.html" %}
 {% block title %} Энциклопедия {% endblock %}
-{% block homepage %} {{ 'index.html' }} {% endblock %}
+{% block homepage %} {{ '/index.html' }} {% endblock %}
 {% block page_header %} Энциклопедия {% endblock %}
-{% block content %} {% for topic in articles.topics %}
-                <div class="col-md-2">
+{% block content %}
+                <div class="container">
+                    <div class="row">
+                {% for topic in articles.topics %}
+                <div class="col-md-4">
                 <h4>{{ topic.title }}</h4>
                 <ul>
                 {% for article in articles.articles %}
@@ -13,4 +16,7 @@
                 {% endfor %}
                 </ul>
                 </div>
-            {% endfor %}{% endblock %}
+                {% endfor %}
+                    </div>
+                </div>
+{% endblock %}
