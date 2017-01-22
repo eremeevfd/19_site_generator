@@ -61,7 +61,7 @@ def convert_articles_to_html_pages(articles):
 
 
 def render_index_page(articles_list):
-    with open('site/index.html', 'w') as index:
+    with open('index.html', 'w') as index:
         index.seek(0)
         index.truncate()
         index.write(index_template.render(articles=articles_list))
