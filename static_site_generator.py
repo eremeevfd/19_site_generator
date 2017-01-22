@@ -20,7 +20,7 @@ def markdown_filter(text):
 
 
 def create_jinja_environment():
-    env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, lstrip_blocks=True)
+    env = Environment(loader=FileSystemLoader('.'), trim_blocks=True, lstrip_blocks=True, autoescape=True)
     env.filters['markdown'] = markdown_filter
     return env
 
@@ -42,9 +42,7 @@ def render_article_page(html_article, title):
 
 
 def write_html_article_to_file(html_article_file, html_article_path):
-    with open(html_article_path, 'a+') as article_html:
-        article_html.seek(0)
-        article_html.truncate()
+    with open(html_article_path, 'w') as article_html:
         article_html.write(html_article_file)
 
 
@@ -61,9 +59,7 @@ def convert_articles_to_html_pages(articles):
 
 
 def render_index_page(articles_list):
-    with open('index.html', 'w') as index:
-        index.seek(0)
-        index.truncate()
+    with open('site/index.html', 'w') as index:
         index.write(index_template.render(articles=articles_list))
 
 
