@@ -21,7 +21,7 @@ adding new article info to _config.json_.
 
 # Site example
 
-You can see it [here](https://eremeevfd.github.io/19_site_generator/index.html).
+You can see it [here](https://eremeevfd.github.io/19_site_generator/site/index.html).
 
 # Project Goals
 
