@@ -11,7 +11,7 @@
                 <ul>
                 {% for article in articles.articles %}
                     {% if article.topic == topic.slug %}
-                        <li><a href="/{{ article.html }}">{{ article.title }}</a></li>
+                        <li><a href="{{ article.html }}">{{ article.title }}</a></li>
                     {% endif %}
                 {% endfor %}
                 </ul>
