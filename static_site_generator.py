@@ -46,12 +46,20 @@ def write_html_article_to_file(html_article_file, html_article_path):
         article_html.write(html_article_file)
 
 
+def get_html_article_path(md_article):
+    return 'site/articles/{0}.html'.format(os.path.splitext(md_article['source'])[0])
+
+
+def create_html_article_dirs_if_not_exist(html_article_path):
+    if not os.path.exists(os.path.dirname(html_article_path)):
+        os.makedirs(os.path.dirname(html_article_path))
+
+
 def convert_articles_to_html_pages(articles):
     for md_article in articles:
-        html_article_path = 'site/articles/{0}.html'.format(os.path.splitext(md_article['source'])[0])
+        html_article_path = get_html_article_path(md_article)
         md_article['html'] = html_article_path
-        if not os.path.exists(os.path.dirname(html_article_path)):
-            os.makedirs(os.path.dirname(html_article_path))
+        create_html_article_dirs_if_not_exist(html_article_path)
         article_file = open_markdown_article_from_file(md_article)
         html_article = convert_markdown_to_html(article_file)
         rendered_article_page = render_article_page(html_article, md_article['title'])
