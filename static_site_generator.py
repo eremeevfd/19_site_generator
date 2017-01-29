@@ -55,7 +55,7 @@ def create_html_article_dirs_if_not_exist(html_article_path):
         os.makedirs(os.path.dirname(html_article_path))
 
 
-def convert_articles_to_html_pages(articles):
+def make_site_structure(articles):
     for md_article in articles:
         html_article_path = get_html_article_path(md_article)
         md_article['html'] = html_article_path
@@ -72,9 +72,9 @@ def render_index_page(articles_list):
 
 
 if __name__ == '__main__':
-    articles_list = load_json_config()
     env = create_jinja_environment()
     index_template = env.get_template('/templates/index.html')
     article_template = env.get_template('/templates/article.html')
-    convert_articles_to_html_pages(articles_list['articles'])
+    articles_list = load_json_config()
+    make_site_structure(articles_list['articles'])
     render_index_page(articles_list)
